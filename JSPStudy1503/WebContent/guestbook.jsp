@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+<%@ page  language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
     <title>JSPStudy</title>
     <!-- Meta -->
@@ -26,13 +28,17 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head> 
+
 <body data-spy="scroll">
+    
+   
+    
     <!-- ******HEADER****** --> 
     <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
                 <a class="scrollto" href="#promo">
-                    <span class="logo-title">Haroo</span>
+                    <span class="logo-title"><a href="index.do">Haroo</a></span>
                 </a>
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
@@ -48,7 +54,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                         <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
-                        <li class="nav-item"><a href="guestbook.jsp">Guest Book</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/guestbook.do">Guest Book</a></li>
                         <li class="nav-item"><a class="scrollto" href="#docs">Docs</a></li>
                         <li class="nav-item"><a class="scrollto" href="#license">License</a></li>    
                         <c:set var="username" value="${cookie.UNAME.value }"></c:set>                   
@@ -66,84 +72,78 @@
         </div>
     </header><!--//header-->
     
-	<!-- ******방명록****** --> 
+   
+    
+    <!-- ******GuestBook****** --> 
     <section id="about" class="about section">
-        <div class="container">
-            <h2 class="title text-center">What is devAid?</h2>
-            <p class="intro text-center">Explain your project in detail. Ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
-            <div class="row">
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-heart"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Designed for developers</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-clock-o"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Time saver</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-crosshairs"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">UX-centred</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->           
-                <div class="clearfix visible-md"></div>    
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-tablet"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Mobile-friendly</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->                
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-code"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">Easy to customise</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->
-                <div class="item col-md-4 col-sm-6 col-xs-12">
-                    <div class="icon-holder">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="content">
-                        <h3 class="sub-title">LESS files included</h3>
-                        <p>Outline a benefit here. Tell users what your plugin/software can do for them. You can change the icon above to any of the 400+ <a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank">FontAwesome</a> icons available.</p>
-                    </div><!--//content-->
-                </div><!--//item-->               
-            </div><!--//row-->            
+        <div class="container">            
+			<div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" method="post" action="${pageContext.request.contextPath}/writeGuestbook.do">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="이름 *" name="guest_name" required data-validation-required-message="Please enter your name.">
+                                    <p class="help-block text-danger"></p>
+                                </div>                                
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="비밀번호 *" name="password" required data-validation-required-message="Please enter your password.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="메세지 *" name="message" required data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success">                               
+                                	<button type="submit" class="btn btn-xl">작성</button>
+                                </div> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <!-- Guestbook list -->
+            <c:forEach var="message" items="${messages}">
+	            <div class="row">
+	            	<div class="col-md-12">
+	            		<div class="form-group">		            	 
+			            	 <div class="form-control" style="height:100%;">
+			            	    <strong>작성자 : ${message.guest_name}</strong>
+			            	    <br>
+			            	 	${message.message}
+								<br>
+								<a href="${pageContext.request.contextPath}/deleteGuestBook.do?message_id=${message.message_id}">삭제하기</a>	
+							</div>											
+						</div>
+					</div>
+	           </div> <!--// Guestbook list -->
+           </c:forEach>
+            
         </div><!--//container-->
     </section><!--//about-->
     
+  
+      
     <!-- ******FOOTER****** --> 
     <footer class="footer">
         <div class="container text-center">
             <small class="copyright">Copyright haroo @2015</small>
         </div><!--//container-->
-    </footer><!--//footer-->	
-     <!-- Javascript -->          
+    </footer><!--//footer-->
+     
+    <!-- Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>    
     <script type="text/javascript" src="assets/plugins/jquery.easing.1.3.js"></script>   
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>     
     <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
     <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="assets/js/main.js"></script>      
+    <script type="text/javascript" src="assets/js/main.js"></script>       
 </body>
-</html>
+</html> 

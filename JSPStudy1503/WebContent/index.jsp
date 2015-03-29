@@ -38,7 +38,7 @@
         <div class="container">            
             <h1 class="logo pull-left">
                 <a class="scrollto" href="#promo">
-                    <span class="logo-title">Haroo</span>
+                    <span class="logo-title"><a href="index.do">Haroo</a></span>
                 </a>
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
@@ -54,7 +54,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                         <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
-                        <li class="nav-item"><a href="guestbook.jsp">Guest Book</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/guestbook.do">Guest Book</a></li>
                         <li class="nav-item"><a class="scrollto" href="#docs">Docs</a></li>
                         <li class="nav-item"><a class="scrollto" href="#license">License</a></li>    
                         <c:set var="username" value="${cookie.UNAME.value }"></c:set>                   
@@ -63,8 +63,23 @@
 	                        	<li class="nav-item last"><a href="login.jsp">Login</a></li>                        
 	                        </c:when>
 	                        <c:otherwise>
-	                        	<li class="nav-item"><a class="scrollto">${username }</a></li>
-	                        </c:otherwise>
+	                        	<%-- <li class="nav-item"><a class="scrollto">${username }</a></li> --%>
+	                        	<li class="nav-item last">
+								<!-- <div class="dropdown"> -->
+									<button class="btn btn-default dropdown-toggle" type="button"
+										id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+										${username } <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu"
+										aria-labelledby="dropdownMenu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+											href="${pageContext.request.contextPath}/logout.do">Logout</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1"
+											href="#">Setting</a></li>										
+									</ul>
+								<!-- </div> -->
+								</li>
+							</c:otherwise>
                         </c:choose>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->

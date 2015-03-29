@@ -5,11 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import kr.co.jspstudy.DBLoader.JDBCUtil;
 import kr.co.jspstudy.VO.Member;
 
 
 
-public class MemberDAO {
+public class MemberDao {
 	public void login(Connection conn,Member member){
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -29,8 +30,9 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			try { rs.close();} catch (SQLException e) {	e.printStackTrace();}
-			try { pstmt.close();} catch (SQLException e) {	e.printStackTrace();}
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+			JDBCUtil.close(conn);
 		}
 	}
 	
@@ -52,7 +54,8 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			try { pstmt.close();} catch (SQLException e) {	e.printStackTrace();}
+			JDBCUtil.close(pstmt);
+			JDBCUtil.close(conn);
 		}
 		
 		return result;
