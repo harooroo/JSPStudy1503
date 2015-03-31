@@ -55,6 +55,7 @@ public class MainController extends HttpServlet {
 		// TODO Auto-generated method stub
 		process(request, response);
 	}
+		
 	
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		request.setCharacterEncoding("utf-8");
@@ -93,7 +94,7 @@ public class MainController extends HttpServlet {
 		} else if (command.equals("/register.do")) { // 회원가입
 			service = new MemberRegister();
 		} else if (command.equals("/guestbook.do")) { // 방명록 리스트
-			service = new GuestBookView();
+			service = new GuestBookView();			
 		} else if (command.equals("/writeGuestbook.do")) { // 방명록 작성
 			service = new GuestBookWrite();
 		} else if (command.equals("/deleteGuestBook.do")) { // 방명록 삭제
@@ -101,13 +102,16 @@ public class MainController extends HttpServlet {
 		} else {
 			System.out.println("No matching Command!!");
 		}
+		
+		//Service 실행
+		if(service != null){
+			viewPage = service.doService(request, response);
+		}		
 
 		//view
 		if (isRedirect) {
 			response.sendRedirect(viewPage);
 		} else {
-			viewPage = service.doService(request, response);
-
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
 		}
