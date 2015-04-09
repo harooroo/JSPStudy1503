@@ -7,6 +7,7 @@ import java.sql.Connection;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.jspstudy.DAO.MemberDao;
 import kr.co.jspstudy.DBLoader.DBConnect;
@@ -20,7 +21,7 @@ public class MemberLogin implements JSPService {
 		String memberid = request.getParameter("memberid");
 		String password = request.getParameter("password");
 		String saveid = request.getParameter("saveid");
-		
+		System.out.println("memberid:"+memberid);
 		MemberDao memberDao = new MemberDao();
 		Member member = new Member();
 		member.setMemberid(memberid);
@@ -31,7 +32,7 @@ public class MemberLogin implements JSPService {
 		
 		System.out.println("name:"+member.getName());
 		
-		Cookie cookie1 = new Cookie("LOGIN","success");
+		/*Cookie cookie1 = new Cookie("LOGIN","success");
 		Cookie cookie2 = null;
 		try {
 			cookie2 = new Cookie("UNAME",URLEncoder.encode(member.getName(),"utf-8"));
@@ -40,8 +41,11 @@ public class MemberLogin implements JSPService {
 			e.printStackTrace();
 		}
 		response.addCookie(cookie1);
-		response.addCookie(cookie2);
-		String viewPage = "index.do";
+		response.addCookie(cookie2);*/
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("UNAME", member.getName());
+		String viewPage = "index.jsp";
 		
 		return viewPage;		
 	}
