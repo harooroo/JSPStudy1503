@@ -30,7 +30,7 @@
   </filter>
   <filter-mapping>
     <filter-name>LoginCheck</filter-name>
-    <url-pattern>*.do</url-pattern>
+    <url-pattern>/freeboard/*</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>JDBCDriverLoader</servlet-name>

@@ -9,11 +9,10 @@ import kr.co.jspstudy.DAO.GuestBookMessageDao;
 import kr.co.jspstudy.DBLoader.DBConnect;
 import kr.co.jspstudy.VO.GuestBookMessage;
 
-public class GuestBookWrite implements JSPService {
+public class GuestBookWriteService implements JSPService {
 
 	@Override
-	public String doService(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String doService(HttpServletRequest request, HttpServletResponse response) {
 		String guest_name = request.getParameter("guest_name");
     	String password = request.getParameter("password");
     	String message = request.getParameter("message");	    	

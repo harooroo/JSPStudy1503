@@ -13,7 +13,7 @@ import kr.co.jspstudy.DAO.MemberDao;
 import kr.co.jspstudy.DBLoader.DBConnect;
 import kr.co.jspstudy.VO.Member;
 
-public class MemberLogin implements JSPService {
+public class MemberLoginService implements JSPService {
 
 	@Override
 	public String doService(HttpServletRequest request,
@@ -21,7 +21,7 @@ public class MemberLogin implements JSPService {
 		String memberid = request.getParameter("memberid");
 		String password = request.getParameter("password");
 		String saveid = request.getParameter("saveid");
-		System.out.println("memberid:"+memberid);
+		
 		MemberDao memberDao = new MemberDao();
 		Member member = new Member();
 		member.setMemberid(memberid);
@@ -30,8 +30,8 @@ public class MemberLogin implements JSPService {
 		Connection conn = DBConnect.getConnection();
 		memberDao.login(conn,member);    		
 		
-		System.out.println("name:"+member.getName());
-		
+		System.out.println("**login.......memberid:"+memberid+", name:"+member.getName());
+	
 		/*Cookie cookie1 = new Cookie("LOGIN","success");
 		Cookie cookie2 = null;
 		try {

@@ -10,12 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.co.jspstudy.Service.GuestBookDelete;
-import kr.co.jspstudy.Service.GuestBookView;
-import kr.co.jspstudy.Service.GuestBookWrite;
+import kr.co.jspstudy.Service.FreeBoardDeleteService;
+import kr.co.jspstudy.Service.FreeBoardDetailService;
+import kr.co.jspstudy.Service.FreeBoardModifyService;
+import kr.co.jspstudy.Service.FreeBoardModifyViewService;
+import kr.co.jspstudy.Service.FreeBoardWriteService;
+import kr.co.jspstudy.Service.GuestBookDeleteService;
+import kr.co.jspstudy.Service.GuestBookViewService;
+import kr.co.jspstudy.Service.GuestBookWriteService;
 import kr.co.jspstudy.Service.JSPService;
-import kr.co.jspstudy.Service.MemberLogin;
-import kr.co.jspstudy.Service.MemberRegister;
+import kr.co.jspstudy.Service.MemberLoginService;
+import kr.co.jspstudy.Service.MemberLogoutService;
+import kr.co.jspstudy.Service.MemberRegisterService;
+import kr.co.jspstudy.Service.FreeBoardListService;
 
 
 /**
@@ -64,39 +71,46 @@ public class MainController extends HttpServlet {
 		}
 		
 		System.out.println("command:" + command);
-		System.out.println("getContextPath():" + request.getContextPath());
-		int a = command.indexOf(request.getContextPath());
-		System.out.println("a:" + a);
+		//System.out.println("getContextPath():" + request.getContextPath());
+		//int a = command.indexOf(request.getContextPath());
+		//System.out.println("a:" + a);
 
 		//URI 처리
+		//db의 DML처리를 하는 것은 redirect를 시켜줘서 url이 재실행되더라도 DML문이 실행되 에러가 나지 않도록 했다.
 		if (command.equals("/index.do")) { // 메인페이지
 			isRedirect = true;
 			viewPage = "index.jsp";
 		} else if (command.equals("/login.do")) { // 로그인
-			service = new MemberLogin();
+			service = new MemberLoginService();
 		} else if (command.equals("/logout.do")) { // 로그아웃
-			/*Cookie cookie1 = new Cookie("LOGIN","");
-			Cookie cookie2 = new Cookie("UNAME","");			
-			cookie1.setMaxAge(0); // 쿠키삭제			
-			cookie2.setMaxAge(0); // 쿠키삭제
-			response.addCookie(cookie1);
-			response.addCookie(cookie2);*/
-			
-			HttpSession session = request.getSession(false);
-			session.invalidate();
-			
 			isRedirect = true;
-			viewPage = "index.jsp";
+			service = new MemberLogoutService();
 		} else if (command.equals("/register.do")) { // 회원가입
-			service = new MemberRegister();
+			service = new MemberRegisterService();
 		} else if (command.equals("/guestbook.do")) { // 방명록 목록
-			service = new GuestBookView();			
+			service = new GuestBookViewService();			
 		} else if (command.equals("/writeGuestbook.do")) { // 방명록 작성
-			service = new GuestBookWrite();
+			service = new GuestBookWriteService();
 		} else if (command.equals("/deleteGuestBook.do")) { // 방명록 삭제
-			service = new GuestBookDelete();
-		} else if (command.equals("/freeboard.do")) { // 자유게시판 목록
-			service = new freeBoardList();
+			service = new GuestBookDeleteService();
+		} else if (command.equals("/freeboard/list.do")) { // 자유게시판 목록
+			service = new FreeBoardListService();
+		} else if (command.equals("/freeboard/writeView.do")) { // 자유게시판 쓰기 화면
+			System.out.println(request.getParameter("article_id"));
+			viewPage ="/WEB-INF/freeboard/freeboardWrite.jsp";
+		} else if (command.equals("/freeboard/write.do")) { // 자유게시판 쓰기 처리
+			isRedirect = true;
+			service = new FreeBoardWriteService();
+		} else if (command.equals("/freeboard/viewDetail.do")) { // 자유게시판 상세글 보기
+			service = new FreeBoardDetailService();
+		} else if (command.equals("/freeboard/modifyView.do")) { // 자유게시판 수정 화면
+			service = new FreeBoardModifyViewService();			
+		} else if (command.equals("/freeboard/modify.do")) { // 자유게시판 수정 처리
+			isRedirect = true;
+			service = new FreeBoardModifyService();
+		} else if (command.equals("/freeboard/delete.do")) { // 자유게시판 삭제
+			isRedirect = true;
+			service = new FreeBoardDeleteService();
 		} else {
 			System.out.println("No matching Command!!");
 		}
@@ -106,7 +120,7 @@ public class MainController extends HttpServlet {
 			viewPage = service.doService(request, response);
 		}		
 
-		//view
+		//View 전달
 		if (isRedirect) {
 			response.sendRedirect(viewPage);
 		} else {

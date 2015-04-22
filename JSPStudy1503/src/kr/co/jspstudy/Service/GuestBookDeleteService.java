@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.jspstudy.DAO.GuestBookMessageDao;
 import kr.co.jspstudy.DBLoader.DBConnect;
 
-public class GuestBookDelete implements JSPService{
+public class GuestBookDeleteService implements JSPService{
 
 	@Override
 	public String doService(HttpServletRequest request,

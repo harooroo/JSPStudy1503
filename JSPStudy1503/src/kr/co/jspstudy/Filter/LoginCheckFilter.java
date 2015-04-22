@@ -42,12 +42,10 @@ public class LoginCheckFilter implements Filter {
 
 		// pass the request along the filter chain;
 		HttpServletRequest httpRequest  = (HttpServletRequest) request;
-		HttpSession session = httpRequest.getSession();
-		System.out.println("session:"+session);
-		
+		HttpSession session = httpRequest.getSession(false);
+				
 		String path = ((HttpServletRequest) request).getRequestURI();
-		System.out.println("path:"+path);
-		
+			
 		if (path.startsWith("/JSPStudy1503/login.do")|| path.startsWith("/JSPStudy1503/register.do")) {
 			//request.getRequestDispatcher("index.jsp").forward(request, response);
 			chain.doFilter(request,response);
@@ -65,7 +63,7 @@ public class LoginCheckFilter implements Filter {
 				/*RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 				dispatcher.forward(request, response);*/
 				HttpServletResponse httpResponse = (HttpServletResponse) response;
-				httpResponse.sendRedirect("login.jsp");
+				httpResponse.sendRedirect(httpRequest.getContextPath()+"/login.jsp");
 			}
 			//chain.doFilter(request, response); // Just continue chain.
 		}

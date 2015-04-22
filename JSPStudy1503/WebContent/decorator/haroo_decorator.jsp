@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
  <%@ page trimDirectiveWhitespaces="true" %>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
@@ -18,12 +17,12 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Plugins CSS -->    
-    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/plugins/prism/prism.css">
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link id="theme-style" rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -37,7 +36,7 @@
         <div class="container">            
             <h1 class="logo pull-left">
                 <a class="scrollto" href="#promo">
-                    <span class="logo-title"><a href="index.do">Haroo</a></span>
+                    <span class="logo-title"><a href="${pageContext.request.contextPath}/index.do">Haroo</a></span>
                 </a>
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
@@ -53,21 +52,20 @@
                     <ul class="nav navbar-nav">
                         <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
                         <li class="nav-item"><a class="scrollto" href="#about">About</a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/guestbook.do">Guest Book</a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/freeboard.do">FreeBoard</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/guestbook.do">방명록</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/freeboard/list.do">게시판</a></li>
                         <li class="nav-item"><a class="scrollto" href="#license">License</a></li>    
                         <c:set var="username" value="${UNAME }"></c:set>                   
                         <c:choose>
 	                        <c:when test="${empty username}">
-	                        	<li class="nav-item last"><a href="login.jsp">Login</a></li>                        
+	                        	<li class="nav-item last"><a href="${pageContext.request.contextPath}/login.jsp">Login</a></li>                        
 	                        </c:when>
 	                        <c:otherwise>
 	                        	<%-- <li class="nav-item"><a class="scrollto">${username }</a></li> --%>
 	                        	<li class="nav-item last">
 								<!-- <div class="dropdown"> -->
 									<button class="btn btn-default dropdown-toggle" type="button"
-										id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-										${username } <span class="caret"></span>
+										id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">${username } <span class="caret"></span>
 									</button>
 									<ul class="dropdown-menu" role="menu"
 										aria-labelledby="dropdownMenu1">
@@ -96,13 +94,13 @@
     </footer><!--//footer-->
      
     <!-- Javascript -->          
-    <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>    
-    <script type="text/javascript" src="assets/plugins/jquery.easing.1.3.js"></script>   
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>     
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
-    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="assets/js/main.js"></script>       
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-migrate-1.2.1.min.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery.easing.1.3.js"></script>   
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>     
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script> 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/main.js"></script>       
  
 </body>
 </html>

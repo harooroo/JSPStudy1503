@@ -1,10 +1,10 @@
 package kr.co.jspstudy.VO;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Article {
 	private int article_id;
-	private int family;
+	private int group_id;
 	private int parent;
 	private int depth;
 	private int indent;
@@ -13,17 +13,34 @@ public class Article {
 	private String writer_name;
 	private String title;
 	private String content;
+	
+	
+	public Article() { }
+	public Article(int article_id, int group_id, int parent, int depth,
+			int indent, Date posting_date, int read_count, String writer_name,
+			String title, String content) {		
+		this.article_id = article_id;
+		this.group_id = group_id;
+		this.parent = parent;
+		this.depth = depth;
+		this.indent = indent;
+		this.posting_date = posting_date;
+		this.read_count = read_count;
+		this.writer_name = writer_name;
+		this.title = title;
+		this.content = content;
+	}
 	public int getArticle_id() {
 		return article_id;
 	}
 	public void setArticle_id(int article_id) {
 		this.article_id = article_id;
+	}	
+	public int getGroup_id() {
+		return group_id;
 	}
-	public int getFamily() {
-		return family;
-	}
-	public void setFamily(int family) {
-		this.family = family;
+	public void setGroup_id(int group_id) {
+		this.group_id = group_id;
 	}
 	public int getParent() {
 		return parent;

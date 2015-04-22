@@ -9,7 +9,7 @@ import kr.co.jspstudy.DAO.MemberDao;
 import kr.co.jspstudy.DBLoader.DBConnect;
 import kr.co.jspstudy.VO.Member;
 
-public class MemberRegister implements JSPService{
+public class MemberRegisterService implements JSPService{
 
 	@Override
 	public String doService(HttpServletRequest request,
