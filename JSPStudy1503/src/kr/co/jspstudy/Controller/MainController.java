@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.co.jspstudy.Service.FreeBoardDeleteService;
 import kr.co.jspstudy.Service.FreeBoardDetailService;
+import kr.co.jspstudy.Service.FreeBoardFileUploadService;
 import kr.co.jspstudy.Service.FreeBoardModifyService;
 import kr.co.jspstudy.Service.FreeBoardModifyViewService;
 import kr.co.jspstudy.Service.FreeBoardWriteService;
@@ -111,6 +112,11 @@ public class MainController extends HttpServlet {
 		} else if (command.equals("/freeboard/delete.do")) { // 자유게시판 삭제
 			isRedirect = true;
 			service = new FreeBoardDeleteService();
+		} else if (command.equals("/freeboard/fileuploadView.do")) { // 파일업로드 화면
+			viewPage ="/WEB-INF/freeboard/fileUploadWrite.jsp";
+		} else if (command.equals("/freeboard/fileupload.do")) { // 파일업로드 처리
+			isRedirect = true;
+			service = new FreeBoardFileUploadService();
 		} else {
 			System.out.println("No matching Command!!");
 		}

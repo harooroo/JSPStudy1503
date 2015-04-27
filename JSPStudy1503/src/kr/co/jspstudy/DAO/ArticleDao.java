@@ -91,7 +91,7 @@ public class ArticleDao {
 			pstmt.setString(6,article.getContent());			
 			result = pstmt.executeUpdate();
 			
-			String sql2 ="select LAST_INSERT_ID()";
+			String sql2 ="select LAST_INSERT_ID() from article";
 			int article_id = 0;
 			pstmt = conn.prepareStatement(sql2);
 			rs = pstmt.executeQuery();
@@ -156,10 +156,11 @@ public class ArticleDao {
 	}
 		
 	//±Ûº¸±â
-	public Article viewDetail(Connection conn,int article_id) throws SQLException{
+	public Article viewDetail(Connection conn,int article_id,String viewer) throws SQLException{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Article article = null;
+		
 		try{
 			String sql = "select * from article where article_id=?";
 			pstmt = conn.prepareStatement(sql);
@@ -176,7 +177,16 @@ public class ArticleDao {
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				article = new Article(article_id, group_id, parent, depth, indent, posting_date, read_count, writer_name, title, content);
+				
+				if(!writer_name.equals(viewer)){
+					String sql2 ="update article set read_count=read_count+1 where article_id=?";
+					pstmt = conn.prepareStatement(sql2);
+					pstmt.setInt(1,article_id);					
+					pstmt.executeUpdate();
+					article.setRead_count(read_count+1);
+				}
 			}
+			
 			return article;
 		}finally{
 			JDBCUtil.close(rs);

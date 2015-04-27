@@ -21,7 +21,7 @@ public class FreeBoardModifyViewService implements JSPService {
 		Article article = null;
 		
 		try {
-			article = ArticleDao.getInstance().viewDetail(conn, article_id);
+			article = ArticleDao.getInstance().viewDetail(conn, article_id,(String)request.getSession().getAttribute("UNAME"));
 			//article.setContent(article.getContent().replaceAll("\r\n", "<br>"));
 		} catch (SQLException e) {		
 			e.printStackTrace();

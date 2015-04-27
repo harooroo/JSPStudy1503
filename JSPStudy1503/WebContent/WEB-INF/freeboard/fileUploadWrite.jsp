@@ -17,7 +17,7 @@
 					</h3>
 					<form id="freeboardFrm" class="form-horizontal style-form"
 						method="post" enctype="multipart/form-data"
-						action="${pageContext.request.contextPath}/freeboard/write.do">
+						action="${pageContext.request.contextPath}/freeboard/fileupload.do">
 						<input type="hidden" name="article_id" value="${param.article_id }">
 						<input type="hidden" name="group_id" value="${param.group_id }">
 						<input type="hidden" name="depth" value="${param.depth }">

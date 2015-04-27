@@ -31,6 +31,7 @@ public class FreeBoardWriteService implements JSPService {
 		int read_count = 0;
 		Date posting_date = null;
 		
+		System.out.println("FreeBoardWriteService: UNAME:"+writer_name);
 		System.out.println("FreeBoardWriteService: article_id:"+article_id);
 		//답글 일때
 		if(article_id !=0){			

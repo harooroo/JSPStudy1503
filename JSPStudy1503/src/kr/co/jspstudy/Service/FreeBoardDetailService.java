@@ -19,15 +19,16 @@ public class FreeBoardDetailService implements JSPService {
 		Connection conn = DBConnect.getConnection();		
 		int article_id = CastingAfterNullCheck.toInteger(request.getParameter("article_id"));
 		Article article = null;
+		String viewer = (String)request.getSession().getAttribute("UNAME");
 		
 		try {
-			article = ArticleDao.getInstance().viewDetail(conn, article_id);
+			article = ArticleDao.getInstance().viewDetail(conn, article_id,viewer);
 			article.setContent(article.getContent().replaceAll("\r\n", "<br>"));
 		} catch (SQLException e) {		
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("article", article);
+		request.setAttribute("article", article);		
 		return "/WEB-INF/freeboard/freeboardDetail.jsp";
 	}
 
